@@ -6,6 +6,7 @@ import tads.eaj.trabalhocarrinho.repository.ConectaBanco;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -48,6 +49,9 @@ public class PopulaBanco {
             con.close();
 
             response.getWriter().println("ok");
+
+            HttpSession s = request.getSession();
+            s.setAttribute("login", 1);
 
         } catch (SQLException | URISyntaxException ex) {
             response.getWriter().println(ex);
